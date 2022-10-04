@@ -104,8 +104,8 @@ build$(M)/%.c.o: %.c
 ### Target specific build rules
 
 build$(M)/$(wineasio_dll_MODULE): $(wineasio_dll_OBJS)
-	$(WINEBUILD)  -pthread -m$(M) --dll --fake-module -E $(wineasio_dll_MODULE).spec $^ -o $@
+	$(WINEBUILD) -m$(M) --dll --fake-module -E $(wineasio_dll_MODULE).spec $^ -o $@
 
 build$(M)/$(wineasio_dll_MODULE).so: $(wineasio_dll_OBJS)
-	$(WINECC)  -pthread $^ $(wineasio_dll_LDFLAGS) $(LIBRARIES) \
+	$(WINECC) -pthread $^ $(wineasio_dll_LDFLAGS) $(LIBRARIES) \
 		$(wineasio_dll_DLLS:%=-l%) $(wineasio_dll_LIBRARIES:%=-l%) -o $@
